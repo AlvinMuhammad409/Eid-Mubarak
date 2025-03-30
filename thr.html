@@ -6,25 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Eid Mubarak</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="shorcut icon" href="Card-Logo.png">
+    <link rel="shortcut icon" href="Card-Logo.png">
 </head>
 
 <body>
     <div class="card-thr">
         <div class="payment">
             <h3>KIRIM THR</h3>
+            
             <p>Dana</p>
-            <p id="dana">62882002916435</p>
-            <button class="copy" onclick="copy()">Copy</button>
-            <a href="https://link.dana.id/minta/2vsi836fcj"><button>Link</button></a>
+            <p id="dana-number">62882002916435</p>
+            <button class="copy" onclick="copy('dana-number')">Copy</button>
+
+            <a href="https://link.dana.id/minta/2vsi836fcj" target="_blank">
+                <button>Link</button>
+            </a>
+
             <p>Dana QR</p>
-            <a href="qrdana.jpg"><button>Scan QR Dana</button></a>
+            <a href="qrdana.jpg" target="_blank">
+                <button>Scan QR Dana</button>
+            </a>
         </div>
     </div>
+
     <script>
-        function copy() {
-            var copyText = document.getElementById("dana").innerText;
-            navigator.clipboard.writeText(copyText);
+        function copy(elementId) {
+            var copyText = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(copyText).then(() => {
+                alert("Teks berhasil disalin: " + copyText);
+            }).catch(err => {
+                alert("Gagal menyalin teks");
+            });
         }
     </script>
 </body>
